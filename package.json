@@ -1,19 +1,19 @@
 {
-  "name": "stack-overflow-view",
-  "displayName": "Stack Overflow View",
-  "description": "Integrated solution for searching and finding answers in Stack Overflow",
+  "name": "search-it",
+  "displayName": "Search It",
+  "description": "Integrated solution for searching and finding answers in Stack Overflow and Chat GPT",
   "version": "0.1.1",
-  "homepage": "https://github.com/IsaacSomething/stackoverflow-view-vscode",
+  "homepage": "https://github.com/ManasMadan/vs-code-extension-searchit",
   "icon": "assets/logo.png",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/IsaacSomething/stackoverflow-view-vscode"
+    "url": "https://github.com/ManasMadan/vs-code-extension-searchit"
   },
   "author": {
-    "name": "Tim"
+    "name": "Manas Madan"
   },
-  "publisher": "4tron",
+  "publisher": "ManasMadan",
   "engines": {
     "vscode": "^1.37.0"
   },
@@ -27,6 +27,13 @@
     "Questions"
   ],
   "main": "./out/extension.js",
+  "activationEvents": [
+    "onCommand:extension.searchStackoverflow",
+    "onCommand:extension.searchStackoverflowSelection",
+    "onCommand:extension.searchStackoverflowErrors",
+    "onCommand:extension.searchGPT",
+    "onCommand:extension.searchGPTWithSelectionContext"
+  ],
   "contributes": {
     "commands": [
       {
@@ -91,11 +98,11 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "webpack --mode production",
+    "vscode:prepublish": "webpack --mode production --devtool hidden-source-map",
     "webpack": "webpack --mode development",
     "webpack-dev": "webpack --mode development --watch",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+    "compile": "tsc -p ./ --skipLibCheck",
+    "watch": "tsc -watch -p ./ --skipLibCheck",
     "pretest": "npm run compile",
     "test": "node ./out/test/runTest.js"
   },
@@ -109,7 +116,7 @@
     "mocha": "^6.1.4",
     "ts-loader": "^6.0.4",
     "tslint": "^5.12.1",
-    "typescript": "^3.3.1",
+    "typescript": "^3.9.10",
     "vscode-test": "^1.0.0-next.0",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7"
