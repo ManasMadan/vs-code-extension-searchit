@@ -5,9 +5,7 @@ import { AppPageHtml } from "./app-page";
 import OpenAI from "openai";
 import { Converter } from "showdown";
 
-const openai = new OpenAI({
-  apiKey: "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", // defaults to process.env["OPENAI_API_KEY"]
-});
+const openai = new OpenAI();
 
 export function activate(context: vscode.ExtensionContext) {
   // StackOverFlow

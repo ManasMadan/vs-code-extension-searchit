@@ -96,11 +96,11 @@
     "keybindings": [
       {
         "command": "extension.searchStackoverflow",
-        "key": "ctrl+alt+s",
-        "mac": "ctrl+cmd+s"
+        "key": "ctrl+alt+v",
+        "mac": "ctrl+cmd+v  "
       },
       {
-        "command": "extension.searchStackoverflow",
+        "command": "extension.searchGPT",
         "key": "ctrl+alt+c",
         "mac": "ctrl+cmd+c"
       }
