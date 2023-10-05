@@ -53,8 +53,12 @@
         "title": "ChatGPT: Search"
       },
       {
-        "command": "extension.searchGPTWithSelectionContext",
-        "title": "ChatGPT: Search GPT With Selection Context"
+        "command": "extension.searchGPTWithSelectionContent",
+        "title": "ChatGPT: Search GPT With Selection Content"
+      },
+      {
+        "command": "extension.searchGPTErrors",
+        "title": "ChatGPT: Search Errors"
       }
     ],
     "configuration": [
@@ -94,6 +98,11 @@
         "command": "extension.searchStackoverflow",
         "key": "ctrl+alt+s",
         "mac": "ctrl+cmd+s"
+      },
+      {
+        "command": "extension.searchStackoverflow",
+        "key": "ctrl+alt+c",
+        "mac": "ctrl+cmd+c"
       }
     ]
   },

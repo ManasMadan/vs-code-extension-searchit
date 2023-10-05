@@ -99,8 +99,8 @@ export function activate(context: vscode.ExtensionContext) {
         }
       });
   });
-  let searchGPTWithSelectionContext = vscode.commands.registerCommand(
-    "extension.searchGPTWithSelectionContext",
+  let searchGPTWithSelectionContent = vscode.commands.registerCommand(
+    "extension.searchGPTWithSelectionContent",
     () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor) {
@@ -116,12 +116,47 @@ export function activate(context: vscode.ExtensionContext) {
       openChatGPTWeb(context, selection);
     }
   );
+  let searchGPTErrors = vscode.commands.registerCommand(
+    "extension.searchGPTErrors",
+    () => {
+      let allDiagnostics = vscode.languages.getDiagnostics();
+      let allErrorMessages: string[] = [];
+
+      // append every error to allErrorMessages
+      allDiagnostics.forEach((value) => {
+        value[1].forEach((value) => {
+          let error: string = value.message;
+          if (value.source !== undefined) {
+            error += " " + value.source;
+          }
+
+          allErrorMessages.push(error);
+        });
+      });
+      // Check if there are any errors
+      if (allErrorMessages.length === 0) {
+        return vscode.window.showInformationMessage(
+          "There are currently no errors!"
+        );
+      }
+
+      vscode.window.showQuickPick(allErrorMessages).then((selection) => {
+        if (selection !== undefined) {
+          if (!selection.trim().length) {
+            return vscode.window.showInformationMessage(selection);
+          }
+          openChatGPTWeb(context, selection);
+        }
+      });
+    }
+  );
 
   context.subscriptions.push(searchStackoverflow);
   context.subscriptions.push(searchStackoverflowSelection);
   context.subscriptions.push(searchStackoverflowErrors);
   context.subscriptions.push(searchGPT);
-  context.subscriptions.push(searchGPTWithSelectionContext);
+  context.subscriptions.push(searchGPTWithSelectionContent);
+  context.subscriptions.push(searchGPTErrors);
 }
 function openChatGPTWeb(context: vscode.ExtensionContext, query: string) {
   // Create webview panel
