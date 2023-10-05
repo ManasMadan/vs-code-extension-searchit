@@ -1,0 +1,121 @@
+{
+  "name": "stack-overflow-view",
+  "displayName": "Stack Overflow View",
+  "description": "Integrated solution for searching and finding answers in Stack Overflow",
+  "version": "0.1.1",
+  "homepage": "https://github.com/IsaacSomething/stackoverflow-view-vscode",
+  "icon": "assets/logo.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IsaacSomething/stackoverflow-view-vscode"
+  },
+  "author": {
+    "name": "Tim"
+  },
+  "publisher": "4tron",
+  "engines": {
+    "vscode": "^1.37.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "Stack Overflow",
+    "StackOverflow",
+    "Answers",
+    "Questions"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.searchStackoverflow",
+        "title": "Stackoverflow: Search"
+      },
+      {
+        "command": "extension.searchStackoverflowSelection",
+        "title": "Stackoverflow: Search Selection"
+      },
+      {
+        "command": "extension.searchStackoverflowErrors",
+        "title": "Stackoverflow: Search Errors"
+      },
+      {
+        "command": "extension.searchGPT",
+        "title": "ChatGPT: Search"
+      },
+      {
+        "command": "extension.searchGPTWithSelectionContext",
+        "title": "ChatGPT: Search GPT With Selection Context"
+      }
+    ],
+    "configuration": [
+      {
+        "title": "Stackoverflow View",
+        "properties": {
+          "stackoverflow.view.language": {
+            "type": "string",
+            "enum": [
+              "English",
+              "Spanish",
+              "Russian",
+              "Portuguese",
+              "Japanese"
+            ],
+            "default": "English",
+            "description": "Select your preferred language for Stack Overflow.",
+            "scope": "window"
+          },
+          "stackoverflow.view.sort": {
+            "type": "string",
+            "enum": [
+              "Relevance",
+              "Newest",
+              "Active",
+              "Votes"
+            ],
+            "default": "Relevance",
+            "description": "Select your preferred sort type for returned search results.",
+            "scope": "window"
+          }
+        }
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.searchStackoverflow",
+        "key": "ctrl+alt+s",
+        "mac": "ctrl+cmd+s"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "webpack --mode production",
+    "webpack": "webpack --mode development",
+    "webpack-dev": "webpack --mode development --watch",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^10.12.21",
+    "@types/showdown": "^2.0.2",
+    "@types/vscode": "^1.37.0",
+    "glob": "^7.1.4",
+    "mocha": "^6.1.4",
+    "ts-loader": "^6.0.4",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.1",
+    "vscode-test": "^1.0.0-next.0",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
+  },
+  "dependencies": {
+    "openai": "^4.11.1",
+    "showdown": "^2.1.0"
+  }
+}
